@@ -27,5 +27,7 @@ function Upload(){
             <input type="file" multiple onChange={handleFileChange} />
             <button onClick={handleUpload}>Upload Photos</button>
         </div>
-    )
+    );
 }
+
+export default Upload;

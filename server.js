@@ -26,3 +26,16 @@ app.use('/uploads', express.static('uploads'));
 const PORT = process.env.port || 5000;
 
 app.listen(PORT, () => console.log('Server running on port ${PORT}'));
+
+const fs = require('fs');
+
+//Route to get all photo filenames
+app.get('/uploads', (req, res) => {
+    fs.readdir('./uploads', (err, files) => {
+        if (err){
+            return res.status(500).send('Unable to scan directory');
+        }
+        //Send back an array of filenames
+        res.json(files);
+    });
+});
